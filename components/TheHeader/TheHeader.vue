@@ -15,7 +15,7 @@
    top: 0;
    left: 0;
    width: 100%;
-   background: #022d30;
+   background: #190230;
    height:  4.5rem;
   }
 
