@@ -21,24 +21,35 @@ export default {
   components: {
     PostPreview
   },
-  data() {
-    return {
-      posts: [
-      {
-          title: "Thoughts On The State of MMA",
-          previewText: "Current state of MMA",
-          thumbnailUrl: "https://cdn.images.express.co.uk/img/dynamic/167/590x/Conor-McGregor-Khabib-Nurmagomedov-908222.jpg",
-          id: "state-of-MMA"
-        },
-        {
-            title: "Goat talk",
-            previewText: "talking about the current goat of MMA",
-            thumbnailUrl: "https://cdn.images.express.co.uk/img/dynamic/167/590x/Conor-McGregor-Khabib-Nurmagomedov-908222.jpg",
-            id: "goat-of-MMA"
-          }
-      ]
-    };
-  }
+ asyncData(context) {
+   return context.app.$storyapi.get("cdn/stories", {
+    version: "draft",
+    starts_with: 'blog/'
+  })
+  .then(res => {
+    console.log(res);
+    return res;
+  });
+ }
+
+  // data() {
+    // return {
+      // posts: [
+      // {
+          // title: "Thoughts On The State of MMA",
+          // previewText: "Current state of MMA",
+          // thumbnailUrl: "https://cdn.images.express.co.uk/img/dynamic/167/590x/Conor-McGregor-Khabib-Nurmagomedov-908222.jpg",
+          // id: "state-of-MMA"
+        // },
+        // {
+            // title: "Goat talk",
+            // previewText: "talking about the current goat of MMA",
+            // thumbnailUrl: "https://cdn.images.express.co.uk/img/dynamic/167/590x/Conor-McGregor-Khabib-Nurmagomedov-908222.jpg",
+            // id: "goat-of-MMA"
+          // }
+      // ]
+    // };
+  // }
 };
 </script>
 
