@@ -27,9 +27,17 @@ export default {
     starts_with: 'blog/'
   })
   .then(res => {
-    console.log(res);
-    return res;
-  });
+       return {
+         posts: res.data.stories.map(bp => {
+           return {
+             id: bp.slug,
+             title: bp.content.title,
+             previewText: bp.content.summary,
+             thumbnailUrl: bp.content.thumbnail
+           };
+         })
+       };
+     });
  }
 
   // data() {
