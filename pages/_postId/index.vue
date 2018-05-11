@@ -1,8 +1,8 @@
 <template>
   <div id="post">
-    <div class="post-thumbnail"></div>
-    <h1></h1>
-    <p></p>
+    <div class="post-thumbnail" :style="{backgroundImage: 'URL(' + image +')'}"></div>
+    <h1> {{ title }}</h1>
+    <p> {{ content }}</p>
   </div>
 
 
@@ -17,8 +17,11 @@ export default {
         version: "draft"
       })
       .then(res =>  {
-          console.log(res.data);
-
+        return {
+          image: res.data.story.content.thumbnail,
+          title: res.data.story.content.title,
+          content: res.data.story.content.content
+        };
       });
     }
 };
