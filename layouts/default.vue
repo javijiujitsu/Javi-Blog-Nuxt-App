@@ -23,8 +23,10 @@ export default {
 * {
   box-sizing: border-box;
 }
+
 body {
   font-family: "Lato", sans-serif;
+  margin: 0;
 }
 .main-content {
   margin-top: 4.5rem;
